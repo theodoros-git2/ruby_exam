@@ -3,14 +3,15 @@ class Player
 
 
   def hand
-    jank = ["Pierre", "Papier", "Ciseaux"]
+    jank = ["Goo", "Choki", "Par"]
     decision = true
     while decision do
     puts "Veuillez saisir un nombre."
-    puts "0: Pierre, 1: Papier , 2: Ciseaux"
-    input_hand = gets.to_i
+    puts "0: Goo\n1: Choki\n2: Par\n"
+    input_hand = gets.chomp.to_s
 
-      if  (input_hand == 0 || input_hand == 1 || input_hand == 2)
+
+      if  (input_hand == "0" || input_hand == "1" || input_hand == "2")
         decision = false
       else
         puts "Veuillez saisir un chiffre entre 0 et 2."
@@ -18,9 +19,11 @@ class Player
       end
     end
 
-    puts "Vous avez choisi #{jank[input_hand]}"
+    input_hand2 = input_hand.to_i
 
-    return input_hand
+    puts "Vous avez choisi #{jank[input_hand2]}"
+
+    return input_hand2
 
   end
 
@@ -32,6 +35,7 @@ class Enemy
 
   def hand
     num = rand(0..2)
+    puts "La main de l'adversaire a choisi: #{num}"
     return num
   end
 
@@ -43,7 +47,7 @@ class Janken
 
   def pon(player_hand, enemy_hand)
 
-    janken = ["Pierre", "Papier", "Ciseaux"]
+    janken = ["Goo", "Choki", "Par"]
 
     puts "J'ai choisi #{janken[enemy_hand]}"
 
@@ -76,9 +80,9 @@ class GameStart
 
     janken = Janken.new
 
-    while true
+
       next_game = janken.pon(player.hand, enemy.hand)
-    end
+
 
   end
 
